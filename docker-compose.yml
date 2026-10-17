@@ -17,7 +17,7 @@ services:
       retries: 10
 
   app:
-    build: .
+    image: destinyship/todo-app-mysql:latest
     ports:
       - "3081:3081"
     environment:

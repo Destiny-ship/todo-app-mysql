@@ -14,7 +14,7 @@ RUN npm ci --omit=dev
 COPY . .
 
 # Document the port the app listens on
-EXPOSE 3080
+EXPOSE 3081
 
 # Run as a normal user, not the all-powerful root user
 USER node

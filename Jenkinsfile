@@ -5,7 +5,7 @@ pipeline {
         nodejs 'node24'
     }
     environment {
-        IMAGE = 'destinyship/todo-app'
+        IMAGE = 'destinyship/todo-app-mysql'
         SERVER = 'root@68.183.34.74'
     }
     triggers {
@@ -37,8 +37,8 @@ pipeline {
         stage ('Deploy') {
             steps {
                 sshagent(['droplet-ssh-key']) {
-                    sh 'scp -o StrictHostKeyChecking=accept-new docker-compose.yml $SERVER:/root/todo-app/'
-                    sh 'ssh -o StrictHostKeyChecking=accept-new $SERVER "cd /root/todo-app && docker compose pull app && docker compose up -d"'
+                    sh 'scp -o StrictHostKeyChecking=accept-new docker-compose.yml $SERVER:/root/todo-app-mysql/'
+                    sh 'ssh -o StrictHostKeyChecking=accept-new $SERVER "cd /root/todo-app-mysql && docker compose pull app && docker compose up -d"'
                 }
             }
         }
