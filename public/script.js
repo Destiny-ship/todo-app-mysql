@@ -61,7 +61,7 @@ function render() {
     checkbox.type = 'checkbox';
     checkbox.checked = task.done;
     checkbox.setAttribute('aria-label', `Mark "${task.title}" as done`);
-    checkbox.addEventListener('change', () => toggleTask(task._id, checkbox.checked));
+    checkbox.addEventListener('change', () => toggleTask(task.id, checkbox.checked));
 
     const span = document.createElement('span');
     span.textContent = task.title;
@@ -70,7 +70,7 @@ function render() {
     deleteBtn.className = 'delete-btn';
     deleteBtn.textContent = 'Delete';
     deleteBtn.setAttribute('aria-label', `Delete "${task.title}"`);
-    deleteBtn.addEventListener('click', () => deleteTask(task._id));
+    deleteBtn.addEventListener('click', () => deleteTask(task.id));
 
     li.append(checkbox, span, deleteBtn);
     list.appendChild(li);

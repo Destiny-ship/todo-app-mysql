@@ -7,7 +7,7 @@ const Task = require('../models/Task');
 test('a task without a title is rejected', async () => {
     const task = new Task({});
     await assert.rejects(task.validate(), (err) => {
-        assert.ok(err.errors.title);
+        assert.ok(err.errors.some((e) => e.path === 'title'));
         return true;
     });
 });

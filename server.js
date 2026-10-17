@@ -4,7 +4,7 @@ require('dotenv').config();
 
 //Bring in the the libaries and the task routes
 const express = require('express');
-const mongoose = require('mongoose');
+const sequelize = require('./db');
 const taskRoutes = require('./routes/tasks');
 
 //Creeate the app and choose the port
@@ -21,15 +21,15 @@ app.get('/health', (req, res) => {
     res.send('OK');
 });
 
-//Connect to MongoDB, then start the server
-mongoose.connect(process.env.MONGO_URL)
+//Connect to MySQL, create the table when needed, then start the server
+sequelize.sync()
     .then(() => {
-        console.log('Connected to MongoDB');
+        console.log('Connected to MySQL');
         app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`);
         });
     })
     .catch((err) => {
-        console.error('Could not connect to MongoDB:', err.message);
+        console.error('Could not connect to MySQL:', err.message);
         process.exit(1);
     });

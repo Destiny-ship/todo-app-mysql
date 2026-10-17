@@ -1,14 +1,12 @@
-// fetch mongoose required to talk to mongodb
-const mongoose = require('mongoose');
+// Bring in the data types, and the shared connection
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db');
 
-// The rules: what a task looks like
-const taskSchema = new mongoose.Schema(
-    {
-        title: { type: String, required: true },
-        done: { type: Boolean, default: false }
-    },
-    { timestamps: true }
-);
+// The rules: what a task looks like (this becomes a table in MySQL)
+const Task = sequelize.define('Task', {
+    title: { type: DataTypes.STRING, allowNull: false },
+    done: { type: DataTypes.BOOLEAN, defaultValue: false }
+});
 
-//Turn the rules into a model and share it with other files
-module.exports = mongoose.model('Task', taskSchema);
+// Share the model with other files
+module.exports = Task;
