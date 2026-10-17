@@ -1,0 +1,11 @@
+# downloaded libraries - huge, and can be recreated with npm install
+node_modules/
+
+# secret settings (database address, passwords) - must never go on GitHub
+.env
+
+# This is from the computer and it's not needed to be on Github
+.DS_Store
+
+#secret setting (database address for container)
+docker.env

@@ -1,0 +1,22 @@
+name: to-do
+
+services:
+  mongo:
+    image: mongo:7
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+    volumes: 
+      - mongo-data:/data/db
+  
+  app:
+    image: destinyship/todo-app:latest
+    ports:
+      - "3080:3080"
+    environment:
+      PORT: 3080
+      MONGO_URL: mongodb://${MONGO_USER}:${MONGO_PASS}@mongo:27017/todo?authSource=admin
+    depends_on:
+      - mongo
+volumes:
+  mongo-data:

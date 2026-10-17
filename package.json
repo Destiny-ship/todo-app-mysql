@@ -1,0 +1,19 @@
+{
+    "name": "todo-app",
+    "version": "1.0.0",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node --watch server.js",
+        "test": "node --test",
+        "build": "echo \"No build step needed for this app\""
+    },
+    "dependencies": {
+        "dotenv": "^18.0.5",
+        "express": "^5.2.1",
+        "mongoose": "^9.10.3"
+    },
+    "engines": {
+        "node": ">=24"
+    }
+}

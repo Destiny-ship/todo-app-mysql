@@ -1,0 +1,15 @@
+# Libraries - the image installs its own
+node_modules/
+
+# Secret settings - given to the container when it runs instead
+.env
+
+# Tests - run before the image is built
+test/
+
+# Git history and Mac junk - not needed to run the app
+.git/
+.DS_Store
+
+# secret setting (database address for container)
+docker.env
