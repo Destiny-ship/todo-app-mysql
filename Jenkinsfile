@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         IMAGE = 'destinyship/todo-app-mysql'
-        SERVER = 'root@68.183.34.74'
+        SERVER = 'root@138.68.141.0'
     }
     triggers {
         pollSCM('H/2 * * * *')
@@ -44,7 +44,7 @@ pipeline {
         }
         stage('Check') {
             steps {
-                sh 'curl -f --retry 10 --retry-delay 3 --retry-all-errors http://68.183.34.74:3080/health'
+                sh 'curl -f --retry 10 --retry-delay 3 --retry-all-errors http://138.68.141.0:3081/health'
             }
         }
     }
